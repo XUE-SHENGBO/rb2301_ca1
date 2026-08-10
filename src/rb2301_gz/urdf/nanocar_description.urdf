@@ -78,7 +78,7 @@
     </collision>
   </link>
 
-  <joint name="front_left_wheel_joint" type="continuous">
+  <joint name="front_left_wheel_joint" type="fixed">
     <origin xyz="0.14398 0.087243 0.0179"
       rpy="0 0 0" />
     <parent link="base_link" />
@@ -121,7 +121,7 @@
     </collision>
   </link>
 
-  <joint name="front_right_wheel_joint" type="continuous">
+  <joint name="front_right_wheel_joint" type="fixed">
     <origin
       xyz="0.14278 -0.087247 0.0179"
       rpy="0 0 0" />
@@ -165,7 +165,7 @@
     </collision>
   </link>
 
-  <joint name="back_left_wheel_joint" type="continuous">
+  <joint name="back_left_wheel_joint" type="fixed">
     <origin
       xyz="-0.00015 0.08725 0.0179"
       rpy="0 0 5.2577E-15" />
@@ -209,7 +209,7 @@
     </collision>
   </link>
 
-  <joint name="back_right_wheel_joint" type="continuous">
+  <joint name="back_right_wheel_joint" type="fixed">
     <origin
       xyz="0.00015 -0.08725 0.0179"
       rpy="0 0 0" />
