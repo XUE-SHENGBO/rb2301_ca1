@@ -88,20 +88,33 @@ class ObstacleAvoidanceNode(Node):
     def scan_transfer(self):
         # laser_joint is mounted with yaw=pi in the URDF.  Rotate scan points
         # by pi so +x is the vehicle's forward direction and +y is its left.
-        x = -self.last_scan * np.cos(self.last_scan_angles)
-        y = -self.last_scan * np.sin(self.last_scan_angles)
+        last_scan = self.last_scan
+        last_scan_angles = self.last_scan_angles
+        if last_scan is None or last_scan_angles is None:
+            return
+
+        x = -last_scan * np.cos(last_scan_angles)
+        y = -last_scan * np.sin(last_scan_angles)
         self.last_scan_xy = np.column_stack((x, y))
 
     def front_clear(self):
-        for x, y in self.last_scan_xy:
+        last_scan_xy = self.last_scan_xy
+        if last_scan_xy is None:
+            return True
+
+        for x, y in last_scan_xy:
             if 0.0 < x < obstacle_avoidance_range and abs(y) < front_clear_width:
                 return False
         return True
 
     def choose_avoid_direction(self):
         """Return +1 to pass left or -1 to pass right of an obstacle."""
-        x = self.last_scan_xy[:, 0]
-        y = self.last_scan_xy[:, 1]
+        last_scan_xy = self.last_scan_xy
+        if last_scan_xy is None:
+            return 1.0
+
+        x = last_scan_xy[:, 0]
+        y = last_scan_xy[:, 1]
         distance = np.hypot(x, y)
         front = (x > 0.0) & (x < 1.5)
         left = distance[front & (y >= 0.0)]
