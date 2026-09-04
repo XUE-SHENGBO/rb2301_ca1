@@ -101,27 +101,33 @@ class ObstacleAvoidanceNode(Node):
             if front_state == False:
                 if self.offset_x <= 0:
                     self.state = 'move_left'
+                    self.move_2D(0,0.2,0)
                     self.get_logger().info('前方障碍！前->左')
                 else:
                     self.state = 'move_right'
+                    self.move_2D(0,-0.2,0)
                     self.get_logger().info('前方障碍！前->右')
         elif self.state == 'move_left':
             self.move_2D(0,0.2,0)
             self.offset_x += 0.2*timer_freq
             if front_state == True:
                 self.state = 'move_forward'
+                self.move_2D(0.2,0,0)
                 self.get_logger().info('前方障碍已清除！左->前')
             elif self.left_clear() == False:
                 self.state = 'move_right'
+                self.move_2D(0,-0.2,0)
                 self.get_logger().info('左边遇到障碍！左->右')
         elif self.state == 'move_right':
             self.move_2D(0,-0.2,0)
             self.offset_x -= 0.2*timer_freq
             if front_state == True:
                 self.state = 'move_forward'
+                self.move_2D(0.2,0,0)
                 self.get_logger().info('前方障碍已清除！右->前')
             elif self.right_clear() == False:
                 self.state = 'move_left'
+                self.move_2D(0,0.2,0)
                 self.get_logger().info('右边遇到障碍！右->左')
 
         self.get_logger().debug(f'x偏移：{self.offset_x}')
