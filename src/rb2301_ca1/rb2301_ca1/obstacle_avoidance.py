@@ -20,9 +20,9 @@ PI=3.1415926
 FULL_SCAN_NUM = 721
 downsampling_gap = 10  # maximum 721
 
-front_clear_width = 0.32 # Half-width of the collision corridor in metres
+front_clear_width = 0.2 # Half-width of the collision corridor in metres
 
-obstacle_avoidance_range = 1.2
+obstacle_avoidance_range = 0.2
 
 scan_angle_increment = downsampling_gap*PI/360
 

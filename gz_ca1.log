@@ -1,0 +1,52 @@
+[INFO] [launch]: All log files can be found below /home/lfzyzl/.ros/log/2026-09-04-10-46-36-778858-lfzyzl-Legion-R9000P-ARX8-27955
+[INFO] [launch]: Default logging verbosity is set to INFO
+/home/lfzyzl/Project/rb2301/rb2301_ca1/src
+Generating new obstacle world...
+[INFO] [robot_state_publisher-1]: process started with pid [27977]
+[INFO] [gazebo-2]: process started with pid [27978]
+[INFO] [create-3]: process started with pid [27979]
+[INFO] [parameter_bridge-4]: process started with pid [27980]
+[robot_state_publisher-1] [INFO] [1788489997.049279839] [robot_state_publisher]: Robot initialized
+[create-3] [INFO] [1788489997.071142907] [ros_gz_sim]: Requesting list of world names.
+[parameter_bridge-4] [INFO] [1788489997.079262898] [ros_gz_bridge]: Creating GZ->ROS Bridge: [/cmd_vel (gz.msgs.Twist) -> /cmd_vel (geometry_msgs/msg/Twist)] (Lazy 0)
+[parameter_bridge-4] [INFO] [1788489997.080783838] [ros_gz_bridge]: Creating ROS->GZ Bridge: [/cmd_vel (geometry_msgs/msg/Twist) -> /cmd_vel (gz.msgs.Twist)] (Lazy 0)
+[parameter_bridge-4] [INFO] [1788489997.081330000] [ros_gz_bridge]: Creating GZ->ROS Bridge: [/odom (gz.msgs.Odometry) -> /odom (nav_msgs/msg/Odometry)] (Lazy 0)
+[parameter_bridge-4] [INFO] [1788489997.082468627] [ros_gz_bridge]: Creating ROS->GZ Bridge: [/odom (nav_msgs/msg/Odometry) -> /odom (gz.msgs.Odometry)] (Lazy 0)
+[parameter_bridge-4] [INFO] [1788489997.082831943] [ros_gz_bridge]: Creating GZ->ROS Bridge: [/joint_states (gz.msgs.Model) -> /joint_states (sensor_msgs/msg/JointState)] (Lazy 0)
+[parameter_bridge-4] [INFO] [1788489997.083853027] [ros_gz_bridge]: Creating ROS->GZ Bridge: [/joint_states (sensor_msgs/msg/JointState) -> /joint_states (gz.msgs.Model)] (Lazy 0)
+[parameter_bridge-4] [INFO] [1788489997.084217530] [ros_gz_bridge]: Creating GZ->ROS Bridge: [/tf (gz.msgs.Pose_V) -> /tf (tf2_msgs/msg/TFMessage)] (Lazy 0)
+[parameter_bridge-4] [INFO] [1788489997.085229115] [ros_gz_bridge]: Creating ROS->GZ Bridge: [/tf (tf2_msgs/msg/TFMessage) -> /tf (gz.msgs.Pose_V)] (Lazy 0)
+[parameter_bridge-4] [INFO] [1788489997.085554437] [ros_gz_bridge]: Creating GZ->ROS Bridge: [/scan (gz.msgs.LaserScan) -> /scan (sensor_msgs/msg/LaserScan)] (Lazy 0)
+[parameter_bridge-4] [INFO] [1788489997.085955747] [ros_gz_bridge]: Creating ROS->GZ Bridge: [/scan (sensor_msgs/msg/LaserScan) -> /scan (gz.msgs.LaserScan)] (Lazy 0)
+[parameter_bridge-4] [INFO] [1788489997.086307190] [ros_gz_bridge]: Creating GZ->ROS Bridge: [/imu (gz.msgs.IMU) -> /imu (sensor_msgs/msg/Imu)] (Lazy 0)
+[parameter_bridge-4] [INFO] [1788489997.086669318] [ros_gz_bridge]: Creating ROS->GZ Bridge: [/imu (sensor_msgs/msg/Imu) -> /imu (gz.msgs.IMU)] (Lazy 0)
+[parameter_bridge-4] [INFO] [1788489997.087031447] [ros_gz_bridge]: Creating GZ->ROS Bridge: [/world/empty/dynamic_pose/info (gz.msgs.Pose_V) -> /world/empty/dynamic_pose/info (tf2_msgs/msg/TFMessage)] (Lazy 0)
+[parameter_bridge-4] [INFO] [1788489997.087310464] [ros_gz_bridge]: Creating ROS->GZ Bridge: [/world/empty/dynamic_pose/info (tf2_msgs/msg/TFMessage) -> /world/empty/dynamic_pose/info (gz.msgs.Pose_V)] (Lazy 0)
+[create-3] [INFO] [1788489998.020636920] [ros_gz_sim]: Waiting messages on topic [robot_description].
+[create-3] [INFO] [1788489998.119914766] [ros_gz_sim]: Entity creation successful.
+[INFO] [create-3]: process has finished cleanly [pid 27979]
+[gazebo-2] libEGL warning: pci id for fd 115: 10de:2860, driver (null)
+[gazebo-2] 
+[gazebo-2] pci id for fd 116: 10de:2860, driver (null)
+[gazebo-2] pci id for fd 117: 10de:2860, driver (null)
+[gazebo-2] libEGL warning: egl: failed to create dri2 screen
+[gazebo-2] libEGL warning: pci id for fd 115: 10de:2860, driver (null)
+[gazebo-2] 
+[gazebo-2] pci id for fd 116: 10de:2860, driver (null)
+[gazebo-2] pci id for fd 117: 10de:2860, driver (null)
+[gazebo-2] libEGL warning: egl: failed to create dri2 screen
+[gazebo-2] libEGL warning: pci id for fd 115: 10de:2860, driver (null)
+[gazebo-2] 
+[gazebo-2] libEGL warning: pci id for fd 71: 10de:2860, driver (null)
+[gazebo-2] 
+[gazebo-2] pci id for fd 72: 10de:2860, driver (null)
+[gazebo-2] pci id for fd 73: 10de:2860, driver (null)
+[gazebo-2] libEGL warning: egl: failed to create dri2 screen
+[gazebo-2] libEGL warning: pci id for fd 71: 10de:2860, driver (null)
+[gazebo-2] 
+[gazebo-2] pci id for fd 72: 10de:2860, driver (null)
+[gazebo-2] pci id for fd 73: 10de:2860, driver (null)
+[gazebo-2] libEGL warning: egl: failed to create dri2 screen
+[gazebo-2] libEGL warning: pci id for fd 71: 10de:2860, driver (null)
+[gazebo-2] 
+[parameter_bridge-4] [INFO] [1788490000.015153248] [ros_gz_bridge]: Passing message from ROS geometry_msgs/msg/Twist to Gazebo gz.msgs.Twist (showing msg only once per type)
