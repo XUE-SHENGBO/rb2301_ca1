@@ -4,33 +4,28 @@ from rclpy.node import Node
 from rclpy.logging import set_logger_level, LoggingSeverity
 from geometry_msgs.msg import Twist
 from sensor_msgs.msg import LaserScan
+
 np.set_printoptions(
     2, suppress=True
 )  # Print numpy arrays to specified d.p. and suppress scientific notation (e.g. 1e-5)
 
 max_translate_velocity = 0.4 # Can be implemented as parameter
 max_turn_velocity = max_translate_velocity * 2 # Can be implemented as parameter
-set_logger_level("obstacle_avoidance", level=LoggingSeverity.INFO) # Configure to either LoggingSeverity.INFO or LoggingSeverity.DEBUG  
-
-timer_freq = 0.05
-scan_gap = 10
+set_logger_level("obstacle_avoidance", level=LoggingSeverity.DEBUG) # Configure to either LoggingSeverity.INFO or LoggingSeverity.DEBUG  
 
 class ObstacleAvoidanceNode(Node):
     def __init__(self):
         """Node constructor"""
         super().__init__("obstacle_avoidance")
         self.get_logger().info("Starting Obstacle Avoidance")
-
         self.pub_cmd_vel = self.create_publisher(Twist, "cmd_vel", 10)  # Publish to cmd_vel node
         self.sub_scan = self.create_subscription(LaserScan, "scan", self.sub_scan_callback, 2) # The subscriber to the Lidar ranges.
         self.last_scan = None # Copied laser scan message
-        self.last_scan_angles = None
 
-        self.timer = self.create_timer(timer_freq, self.timer_callback)  # Runs at 20Hz. Can be changed. 
+        self.timer = self.create_timer(0.5, self.timer_callback)  # Runs at 20Hz. Can be changed.
 
-        self.state='move_forward'
-        self.offset_x = 0
-        self.offset_y = 0
+        #New added 
+        self.last_direction = 1
 
     def move_2D(self, x: float = 0.0, y: float = 0.0, turn: float = 0.0):
         """Publishes a twist command to move in 2D space. +ve x is forwards, +ve y is left, and +ve turn is anticlockwise"""
@@ -44,94 +39,44 @@ class ObstacleAvoidanceNode(Node):
 
     def sub_scan_callback(self, msg):
         """Scan subscriber"""
-        indices = np.arange(0, len(msg.ranges), scan_gap)
-        self.last_scan = np.asarray(msg.ranges)[indices]
-        self.last_scan_angles = msg.angle_min + indices * msg.angle_increment
+        self.last_scan = np.array(msg.ranges)[::36] # Slices the 721 scan array to return only 36 scans. Feel free to edit
 
-    def transfer(self):
+    def timer_callback(self):
+
         if self.last_scan is None:
             return
-        self.last_scan_xy=[]
-        for i in range(len(self.last_scan)):
-            if self.last_scan[i] != float('inf'):
-                angle = self.last_scan_angles[i]
-                x = -self.last_scan[i]*np.sin(angle)
-                y = -self.last_scan[i]*np.cos(angle)
-                self.last_scan_xy.append((x,y))
 
-    def front_clear(self):
-        for obstacle_dot in self.last_scan_xy:
-            x=obstacle_dot[0]
-            y=obstacle_dot[1]
-            if x>-0.15 and x<0.15 and y>0 and y<0.25:
-                return False
-        return True
+        self.get_logger().debug(str(self.last_scan))
+        threshold = 0.25
 
-    def left_clear(self):
-        for obstacle_dot in self.last_scan_xy:
-            x=obstacle_dot[0]
-            y=obstacle_dot[1]
-            if x < 0.2 and x>0 and y>-0.15 and y<0.15:
-                return False
-        return True
+        # LiDAR sectors
+        front = np.concatenate((self.last_scan[-2:], self.last_scan[:3]))
+        right = self.last_scan[3:8]
+        left = self.last_scan[13:18]
 
-    def right_clear(self):
-        for obstacle_dot in self.last_scan_xy:
-            x=obstacle_dot[0]
-            y=obstacle_dot[1]
-            if x >-0.2 and x <0 and y>-0.15 and y<0.15:
-                return False
-        return True
+        front_distance = np.min(front)
+
+        # Replace inf with a large distance for comparison
+        left_clean = left.copy()
+        right_clean = right.copy()
+
+        left_clean[left_clean == np.inf] = 10.0
+        right_clean[right_clean == np.inf] = 10.0
+
+        left_space = np.mean(left_clean)
+        right_space = np.mean(right_clean)
+
+        # Obstacle ahead
+        if front_distance < threshold:
+            if left_space - right_space > 0.5:
+                self.last_direction = 1
+            elif right_space - left_space > 0.5:
+                self.last_direction = -1
+            self.move_2D(0.0,0.3 * self.last_direction, 0.0)
+        else:
+            #no obstacle ahead, move forward
+            self.move_2D(max_translate_velocity,0.0,0.0)
     
-    def timer_callback(self):
-        """Controller loop"""
-
-        if self.last_scan is None:
-            return # Does not run if the laser message is not received.
-
-        self.transfer()
-        ######################## MODIFY CODE HERE ########################
-        #self.get_logger().debug(str(self.last_scan))
-
-        #self.move_2D(0.2, 0.0, 0.0)
-        front_state = self.front_clear()
-        if self.state == 'move_forward':
-            self.move_2D(0.2,0,0)
-            self.offset_y += 0.2*timer_freq
-            if front_state == False:
-                if self.offset_x <= 0:
-                    self.state = 'move_left'
-                    self.move_2D(0,0.2,0)
-                    self.get_logger().info('前方障碍！前->左')
-                else:
-                    self.state = 'move_right'
-                    self.move_2D(0,-0.2,0)
-                    self.get_logger().info('前方障碍！前->右')
-        elif self.state == 'move_left':
-            self.move_2D(0,0.2,0)
-            self.offset_x += 0.2*timer_freq
-            if front_state == True:
-                self.state = 'move_forward'
-                self.move_2D(0.2,0,0)
-                self.get_logger().info('前方障碍已清除！左->前')
-            elif self.left_clear() == False:
-                self.state = 'move_right'
-                self.move_2D(0,-0.2,0)
-                self.get_logger().info('左边遇到障碍！左->右')
-        elif self.state == 'move_right':
-            self.move_2D(0,-0.2,0)
-            self.offset_x -= 0.2*timer_freq
-            if front_state == True:
-                self.state = 'move_forward'
-                self.move_2D(0.2,0,0)
-                self.get_logger().info('前方障碍已清除！右->前')
-            elif self.right_clear() == False:
-                self.state = 'move_left'
-                self.move_2D(0,0.2,0)
-                self.get_logger().info('右边遇到障碍！右->左')
-
-        self.get_logger().debug(f'x偏移：{self.offset_x}')
-        ######################## MODIFY CODE HERE ########################
 
 
 def main(args=None):
