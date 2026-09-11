@@ -4,6 +4,14 @@ from rclpy.node import Node
 from rclpy.logging import set_logger_level, LoggingSeverity
 from geometry_msgs.msg import Twist
 from sensor_msgs.msg import LaserScan
+# 绘图消息发送库
+from sensor_msgs.msg import PointCloud2
+from sensor_msgs_py import point_cloud2
+from std_msgs.msg import Header
+from rclpy.qos import (
+    qos_profile_sensor_data
+)
+
 np.set_printoptions(
     2, suppress=True
 )  # Print numpy arrays to specified d.p. and suppress scientific notation (e.g. 1e-5)
@@ -32,6 +40,13 @@ class ObstacleAvoidanceNode(Node):
         self.offset_x = 0
         self.offset_y = 0
 
+        self.pub_points = self.create_publisher(
+            PointCloud2, 
+            "obstacle_points",
+            qos_profile_sensor_data
+        )
+        self.scan_stamp = None
+
     def move_2D(self, x: float = 0.0, y: float = 0.0, turn: float = 0.0):
         """Publishes a twist command to move in 2D space. +ve x is forwards, +ve y is left, and +ve turn is anticlockwise"""
         twist_msg = Twist()
@@ -47,9 +62,10 @@ class ObstacleAvoidanceNode(Node):
         indices = np.arange(0, len(msg.ranges), scan_gap)
         self.last_scan = np.asarray(msg.ranges)[indices]
         self.last_scan_angles = msg.angle_min + indices * msg.angle_increment
+        self.scan_stamp = msg.header.stamp
 
     def transfer(self):
-        if self.last_scan is None:
+        if self.last_scan is None or self.last_scan_angles is None:
             return
         self.last_scan_xy=[]
         for i in range(len(self.last_scan)):
@@ -82,7 +98,27 @@ class ObstacleAvoidanceNode(Node):
             if x >-0.2 and x <0 and y>-0.15 and y<0.15:
                 return False
         return True
-    
+
+    def publish_point_cloud(self):
+        points = np.asarray(
+            self.last_scan_xy, dtype=np.float32
+        ).reshape(-1, 2)
+
+        # 排除无效坐标
+        points = points[np.isfinite(points).all(axis=1)]
+
+        # (N, 2) → (N, 3)，Z 坐标全部为 0
+        xyz = np.zeros((len(points), 3), dtype=np.float32)
+        xyz[:, :2] = points
+
+        header = Header()
+        if self.scan_stamp is not None:
+            header.stamp = self.scan_stamp
+        header.frame_id = "avoidance_xy"
+
+        msg = point_cloud2.create_cloud_xyz32(header, xyz)
+        self.pub_points.publish(msg)
+
     def timer_callback(self):
         """Controller loop"""
 
@@ -90,13 +126,14 @@ class ObstacleAvoidanceNode(Node):
             return # Does not run if the laser message is not received.
 
         self.transfer()
+        self.publish_point_cloud()
         ######################## MODIFY CODE HERE ########################
         #self.get_logger().debug(str(self.last_scan))
 
         #self.move_2D(0.2, 0.0, 0.0)
         front_state = self.front_clear()
         if self.state == 'move_forward':
-            self.move_2D(0.2,0,0)
+            #self.move_2D(0.2,0,0)
             self.offset_y += 0.2*timer_freq
             if front_state == False:
                 if self.offset_x <= 0:
@@ -108,7 +145,7 @@ class ObstacleAvoidanceNode(Node):
                     self.move_2D(0,-0.2,0)
                     self.get_logger().info('前方障碍！前->右')
         elif self.state == 'move_left':
-            self.move_2D(0,0.2,0)
+            #self.move_2D(0,0.2,0)
             self.offset_x += 0.2*timer_freq
             if front_state == True:
                 self.state = 'move_forward'
@@ -119,7 +156,7 @@ class ObstacleAvoidanceNode(Node):
                 self.move_2D(0,-0.2,0)
                 self.get_logger().info('左边遇到障碍！左->右')
         elif self.state == 'move_right':
-            self.move_2D(0,-0.2,0)
+            #self.move_2D(0,-0.2,0)
             self.offset_x -= 0.2*timer_freq
             if front_state == True:
                 self.state = 'move_forward'
