@@ -16,12 +16,12 @@ np.set_printoptions(
     2, suppress=True
 )  # Print numpy arrays to specified d.p. and suppress scientific notation (e.g. 1e-5)
 
-max_translate_velocity = 0.4 # Can be implemented as parameter
+max_translate_velocity = 0.5 # Can be implemented as parameter
 max_turn_velocity = max_translate_velocity * 2 # Can be implemented as parameter
 set_logger_level("obstacle_avoidance", level=LoggingSeverity.INFO) # Configure to either LoggingSeverity.INFO or LoggingSeverity.DEBUG  
 
 timer_freq = 0.05
-scan_gap = 10
+scan_gap = 5
 
 class ObstacleAvoidanceNode(Node):
     def __init__(self):
@@ -87,7 +87,7 @@ class ObstacleAvoidanceNode(Node):
         for obstacle_dot in self.last_scan_xy:
             x=obstacle_dot[0]
             y=obstacle_dot[1]
-            if x < 0.2 and x>0 and y>-0.15 and y<0.15:
+            if x < 0.15 and x>0 and y>-0.15 and y<0.15:
                 return False
         return True
 
@@ -95,7 +95,7 @@ class ObstacleAvoidanceNode(Node):
         for obstacle_dot in self.last_scan_xy:
             x=obstacle_dot[0]
             y=obstacle_dot[1]
-            if x >-0.2 and x <0 and y>-0.15 and y<0.15:
+            if x >-0.15 and x <0 and y>-0.15 and y<0.15:
                 return False
         return True
 
@@ -133,7 +133,7 @@ class ObstacleAvoidanceNode(Node):
         #self.move_2D(0.2, 0.0, 0.0)
         front_state = self.front_clear()
         if self.state == 'move_forward':
-            #self.move_2D(0.2,0,0)
+            self.move_2D(0.2,0,0)
             self.offset_y += 0.2*timer_freq
             if front_state == False:
                 if self.offset_x <= 0:
@@ -145,7 +145,7 @@ class ObstacleAvoidanceNode(Node):
                     self.move_2D(0,-0.2,0)
                     self.get_logger().info('前方障碍！前->右')
         elif self.state == 'move_left':
-            #self.move_2D(0,0.2,0)
+            self.move_2D(0,0.2,0)
             self.offset_x += 0.2*timer_freq
             if front_state == True:
                 self.state = 'move_forward'
@@ -156,7 +156,7 @@ class ObstacleAvoidanceNode(Node):
                 self.move_2D(0,-0.2,0)
                 self.get_logger().info('左边遇到障碍！左->右')
         elif self.state == 'move_right':
-            #self.move_2D(0,-0.2,0)
+            self.move_2D(0,-0.2,0)
             self.offset_x -= 0.2*timer_freq
             if front_state == True:
                 self.state = 'move_forward'

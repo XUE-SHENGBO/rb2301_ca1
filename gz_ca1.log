@@ -61,43 +61,43 @@
 [INFO] [1789108685.908651536] [obstacle_avoidance]: 前方障碍已清除！左->前
 [INFO] [1789108685.958387401] [obstacle_avoidance]: 前方障碍！前->右
 [INFO] [1789108686.008488954] [obstacle_avoidance]: 右边遇到障碍！右->左
-[INFO] [1789108686.158644019] [obstacle_avoidance]: 左边遇到障碍！左->右
-[INFO] [1789108686.208466559] [obstacle_avoidance]: 右边遇到障碍！右->左
-[INFO] [1789108686.308686291] [obstacle_avoidance]: 前方障碍已清除！左->前
-[INFO] [1789108686.358672678] [obstacle_avoidance]: 前方障碍！前->右
-[INFO] [1789108686.408509465] [obstacle_avoidance]: 右边遇到障碍！右->左
-[INFO] [1789108686.458855603] [obstacle_avoidance]: 前方障碍已清除！左->前
-[INFO] [1789108686.508644899] [obstacle_avoidance]: 前方障碍！前->右
-[INFO] [1789108686.558466251] [obstacle_avoidance]: 右边遇到障碍！右->左
-[INFO] [1789108687.008354420] [obstacle_avoidance]: 前方障碍已清除！左->前
-[INFO] [1789108687.058517716] [obstacle_avoidance]: 前方障碍！前->右
-[INFO] [1789108687.108739189] [obstacle_avoidance]: 右边遇到障碍！右->左
-[INFO] [1789108687.258502452] [obstacle_avoidance]: 左边遇到障碍！左->右
-[INFO] [1789108687.308473406] [obstacle_avoidance]: 右边遇到障碍！右->左
-[INFO] [1789108687.558677241] [obstacle_avoidance]: 前方障碍已清除！左->前
-[INFO] [1789108687.658437493] [obstacle_avoidance]: 前方障碍！前->右
-[INFO] [1789108687.708851309] [obstacle_avoidance]: 右边遇到障碍！右->左
-[INFO] [1789108687.758330722] [obstacle_avoidance]: 前方障碍已清除！左->前
-[INFO] [1789108687.808454837] [obstacle_avoidance]: 前方障碍！前->右
-[INFO] [1789108687.858419854] [obstacle_avoidance]: 右边遇到障碍！右->左
-[INFO] [1789108687.908723252] [obstacle_avoidance]: 前方障碍已清除！左->前
-[INFO] [1789108687.958486429] [obstacle_avoidance]: 前方障碍！前->右
-[INFO] [1789108688.008557116] [obstacle_avoidance]: 右边遇到障碍！右->左
-[INFO] [1789108688.108871839] [obstacle_avoidance]: 前方障碍已清除！左->前
-[INFO] [1789108688.158461673] [obstacle_avoidance]: 前方障碍！前->右
-[INFO] [1789108688.208595288] [obstacle_avoidance]: 右边遇到障碍！右->左
-[INFO] [1789108688.258573368] [obstacle_avoidance]: 左边遇到障碍！左->右
-[INFO] [1789108688.308740228] [obstacle_avoidance]: 右边遇到障碍！右->左
-[INFO] [1789108688.358718308] [obstacle_avoidance]: 左边遇到障碍！左->右
-[INFO] [1789108688.408549163] [obstacle_avoidance]: 右边遇到障碍！右->左
-[INFO] [1789108688.508442395] [obstacle_avoidance]: 左边遇到障碍！左->右
-[INFO] [1789108688.658918042] [obstacle_avoidance]: 右边遇到障碍！右->左
-[INFO] [1789108688.858687885] [obstacle_avoidance]: 左边遇到障碍！左->右
-[INFO] [1789108688.908541299] [obstacle_avoidance]: 右边遇到障碍！右->左
-[INFO] [1789108688.958693911] [obstacle_avoidance]: 左边遇到障碍！左->右
-[INFO] [1789108689.008416722] [obstacle_avoidance]: 右边遇到障碍！右->左
-[INFO] [1789108689.058401928] [obstacle_avoidance]: 左边遇到障碍！左->右
-[INFO] [1789108689.108520110] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108686.1586[parameter_bridge-4] Exception sending a multicast message:Network is unreachable
+[parameter_bridge-4] Exception sending a multicast message:Network is unreachable
+[parameter_bridge-4] Exception sending a multicast message:Network is unreachable
+[parameter_bridge-4] Exception sending a multicast message:Network is unreachable
+[parameter_bridge-4] Exception sending a multicast message:Network is unreachable
+[parameter_bridge-4] Exception sending a multicast message:Network is unreachable
+[parameter_bridge-4] Exception sending a multicast message:Network is unreachable
+[parameter_bridge-4] Exception sending a multicast message:Network is unreachable
+[parameter_bridge-4] Exception sending a multicast message:Network is unreachable
+[parameter_bridge-4] Exception sending a multicast message:Network is unreachable
+[parameter_bridge-4] Exception sending a multicast message:Network is unreachable
+[parameter_bridge-4] Exception sending a multicast message:Network is unreachable
+[parameter_bridge-4] Exception sending a multicast message:Network is unreachable
+[parameter_bridge-4] Exception sending a multicast message:Network is unreachable
+[parameter_bridge-4] Exception sending a multicast message:Network is unreachable
+[parameter_bridge-4] Exception sending a multicast message:Network is unreachable
+[parameter_bridge-4] Exception sending a multicast message:Network is unreachable
+[parameter_bridge-4] Exception sending a multicast message:Network is unreachable
+[parameter_bridge-4] Exception sending a multicast message:Network is unreachable
+[parameter_bridge-4] Exception sending a multicast message:Network is unreachable
+[parameter_bridge-4] Exception sending a multicast message:Network is unreachable
+[parameter_bridge-4] Exception sending a multicast message:Network is unreachable
+[parameter_bridge-4] Exception sending a multicast message:Network is unreachable
+[parameter_bridge-4] Exception sending a multicast message:Network is unreachable
+[parameter_bridge-4] Exception sending a multicast message:Network is unreachable
+[parameter_bridge-4] Exception sending a multicast message:Network is unreachable
+[parameter_bridge-4] Exception sending a multicast message:Network is unreachable
+[parameter_bridge-4] Exception sending a multicast message:Network is unreachable
+[parameter_bridge-4] Exception sending a multicast message:Network is unreachable
+[parameter_bridge-4] Exception sending a multicast message:Network is unreachable
+[parameter_bridge-4] Exception sending a multicast message:Network is unreachable
+[parameter_bridge-4] Exception sending a multicast message:Network is unreachable
+[parameter_bridge-4] Exception sending a multicast message:Network is unreachable
+[parameter_bridge-4] Exception sending a multicast message:Network is unreachable
+[parameter_bridge-4] Exception sending a multicast message:Network is unreachable
+[parameter_bridge-4] Exception sending a multicast message:Network is unreachable
+dance]: 右边遇到障碍！右->左
 [INFO] [1789108689.208819402] [obstacle_avoidance]: 前方障碍已清除！左->前
 [INFO] [1789108689.258449606] [obstacle_avoidance]: 前方障碍！前->右
 [INFO] [1789108689.308468056] [obstacle_avoidance]: 右边遇到障碍！右->左
