@@ -21,7 +21,7 @@ max_turn_velocity = max_translate_velocity * 2 # Can be implemented as parameter
 set_logger_level("obstacle_avoidance", level=LoggingSeverity.INFO) # Configure to either LoggingSeverity.INFO or LoggingSeverity.DEBUG  
 
 timer_freq = 0.05
-scan_gap = 5
+scan_gap = 10
 
 class ObstacleAvoidanceNode(Node):
     def __init__(self):
