@@ -4,7 +4,7 @@ from rclpy.node import Node
 from rclpy.logging import set_logger_level, LoggingSeverity
 from geometry_msgs.msg import Twist
 from sensor_msgs.msg import LaserScan
-# 绘图消息发送库
+# graph message lib
 from sensor_msgs.msg import PointCloud2
 from sensor_msgs_py import point_cloud2
 from std_msgs.msg import Header
@@ -76,13 +76,13 @@ class ObstacleAvoidanceNode(Node):
                 x = -self.last_scan[i]*np.sin(angle)
                 y = -self.last_scan[i]*np.cos(angle)
                 self.last_scan_xy.append((x,y))
-# 小车尺寸：前面7cm，左右10cm，后面15cm 
+# car size：front7cm，left and right: 10cm，back: 15cm 
 # 
     def front_clear(self):
         for obstacle_dot in self.last_scan_xy:
             x=obstacle_dot[0]
             y=obstacle_dot[1]
-            if x>-0.11 and x<0.11 and y>0 and y<0.15:
+            if x>-0.11 and x<0.11 and y>0 and y<0.25:
                 return False
         return True
 
@@ -111,10 +111,9 @@ class ObstacleAvoidanceNode(Node):
             self.last_scan_xy, dtype=np.float32
         ).reshape(-1, 2)
 
-        # 排除无效坐标
+        # ignore meaningless points
         points = points[np.isfinite(points).all(axis=1)]
 
-        # (N, 2) → (N, 3)，Z 坐标全部为 0
         xyz = np.zeros((len(points), 3), dtype=np.float32)
         xyz[:, :2] = points
 
@@ -144,39 +143,39 @@ class ObstacleAvoidanceNode(Node):
             if front_state == False:
                 if self.offset_x <= 0:
                     self.state = 'move_left'
-                    self.get_logger().info('前方障碍！前->左')
+                    self.get_logger().info('obstacle in front! front->left')
                     self.last_state = 'move_left'
                 else:
                     self.state = 'move_right'
-                    self.get_logger().info('前方障碍！前->右')
+                    self.get_logger().info('obstacle in front! front->right')
                     self.last_state = 'move_right'
 
         elif self.state == 'move_left':
             if front_state == True:
                 self.state = 'move_forward'
-                self.get_logger().info('前方障碍已清除！左->前')
+                self.get_logger().info('obstacle in front has clear! left->front')
             elif self.left_clear() == False:
                 if self.last_state == "move_right":
-                    self.get_logger().error("长官我们没招了！")
+                    self.get_logger().error("sergeant we are done!")
                     #self.state = "stop"
                 else:
                     self.state = 'move_right'
-                    self.get_logger().info('左边遇到障碍！左->右')
+                    self.get_logger().info('obstacle at left! left->right')
 
         elif self.state == 'move_right':
             if front_state == True:
                 self.state = 'move_forward'
-                self.get_logger().info('前方障碍已清除！右->前')
+                self.get_logger().info('obstacle in front has clear!right->front')
 
             elif self.right_clear() == False:
-                if self.last_state == "move_left":
-                    self.get_logger().error("长官我们没招了！")
+                if self.last_state == "move_left": 
+                    self.get_logger().error("sergeant we are done!")
                     #self.state = "stop"
                     self.state = 'move_left'
-                    self.get_logger().info('右边遇到障碍!右->左')
+                    self.get_logger().info('obstacle at right! right->left')
                 else:
                     self.state = 'move_left'
-                    self.get_logger().info('右边遇到障碍!右->左')
+                    self.get_logger().info('obstacle at right! right->left')
 
         # 根据切换后的状态，每个周期只发布一次速度指令。
         if self.state == 'move_forward':
