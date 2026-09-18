@@ -156,7 +156,7 @@ class ObstacleAvoidanceNode(Node):
             elif self.left_clear() == False:
                 if self.last_state == "move_right":
                     self.get_logger().error("长官我们没招了！")
-                    self.state = "stop"
+                    #self.state = "stop"
                 else:
                     self.state = 'move_right'
                     self.get_logger().info('左边遇到障碍！左->右')
