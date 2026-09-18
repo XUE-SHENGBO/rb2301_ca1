@@ -47,6 +47,7 @@ class ObstacleAvoidanceNode(Node):
             qos_profile_sensor_data
         )
         self.scan_stamp = None
+        self.move_stack = []
 
     def move_2D(self, x: float = 0.0, y: float = 0.0, turn: float = 0.0):
         """Publishes a twist command to move in 2D space. +ve x is forwards, +ve y is left, and +ve turn is anticlockwise"""
@@ -75,12 +76,13 @@ class ObstacleAvoidanceNode(Node):
                 x = -self.last_scan[i]*np.sin(angle)
                 y = -self.last_scan[i]*np.cos(angle)
                 self.last_scan_xy.append((x,y))
-
+# 小车尺寸：前面7cm，左右10cm，后面15cm 
+# 
     def front_clear(self):
         for obstacle_dot in self.last_scan_xy:
             x=obstacle_dot[0]
             y=obstacle_dot[1]
-            if x>-0.15 and x<0.15 and y>0 and y<0.25:
+            if x>-0.11 and x<0.11 and y>0 and y<0.15:
                 return False
         return True
 
@@ -90,7 +92,7 @@ class ObstacleAvoidanceNode(Node):
         for obstacle_dot in self.last_scan_xy:
             x=obstacle_dot[0]
             y=obstacle_dot[1]
-            if x < 0.15 and x>0 and y>-0.15 and y<0.15:
+            if x < 0.15 and x>0 and y>-0.17 and y<0.10:
                 return False
         return True
 
@@ -100,7 +102,7 @@ class ObstacleAvoidanceNode(Node):
         for obstacle_dot in self.last_scan_xy:
             x=obstacle_dot[0]
             y=obstacle_dot[1]
-            if x >-0.15 and x <0 and y>-0.15 and y<0.15:
+            if x >-0.15 and x <0 and y>-0.17 and y<0.10:
                 return False
         return True
 
