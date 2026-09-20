@@ -2,4 +2,5 @@
 build/
 install/
 log/
+rb2301_gz/
 */**/__pycache__

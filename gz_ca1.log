@@ -1,52 +1,464 @@
-[INFO] [launch]: All log files can be found below /home/lfzyzl/.ros/log/2026-09-04-10-46-36-778858-lfzyzl-Legion-R9000P-ARX8-27955
-[INFO] [launch]: Default logging verbosity is set to INFO
-/home/lfzyzl/Project/rb2301/rb2301_ca1/src
-Generating new obstacle world...
-[INFO] [robot_state_publisher-1]: process started with pid [27977]
-[INFO] [gazebo-2]: process started with pid [27978]
-[INFO] [create-3]: process started with pid [27979]
-[INFO] [parameter_bridge-4]: process started with pid [27980]
-[robot_state_publisher-1] [INFO] [1788489997.049279839] [robot_state_publisher]: Robot initialized
-[create-3] [INFO] [1788489997.071142907] [ros_gz_sim]: Requesting list of world names.
-[parameter_bridge-4] [INFO] [1788489997.079262898] [ros_gz_bridge]: Creating GZ->ROS Bridge: [/cmd_vel (gz.msgs.Twist) -> /cmd_vel (geometry_msgs/msg/Twist)] (Lazy 0)
-[parameter_bridge-4] [INFO] [1788489997.080783838] [ros_gz_bridge]: Creating ROS->GZ Bridge: [/cmd_vel (geometry_msgs/msg/Twist) -> /cmd_vel (gz.msgs.Twist)] (Lazy 0)
-[parameter_bridge-4] [INFO] [1788489997.081330000] [ros_gz_bridge]: Creating GZ->ROS Bridge: [/odom (gz.msgs.Odometry) -> /odom (nav_msgs/msg/Odometry)] (Lazy 0)
-[parameter_bridge-4] [INFO] [1788489997.082468627] [ros_gz_bridge]: Creating ROS->GZ Bridge: [/odom (nav_msgs/msg/Odometry) -> /odom (gz.msgs.Odometry)] (Lazy 0)
-[parameter_bridge-4] [INFO] [1788489997.082831943] [ros_gz_bridge]: Creating GZ->ROS Bridge: [/joint_states (gz.msgs.Model) -> /joint_states (sensor_msgs/msg/JointState)] (Lazy 0)
-[parameter_bridge-4] [INFO] [1788489997.083853027] [ros_gz_bridge]: Creating ROS->GZ Bridge: [/joint_states (sensor_msgs/msg/JointState) -> /joint_states (gz.msgs.Model)] (Lazy 0)
-[parameter_bridge-4] [INFO] [1788489997.084217530] [ros_gz_bridge]: Creating GZ->ROS Bridge: [/tf (gz.msgs.Pose_V) -> /tf (tf2_msgs/msg/TFMessage)] (Lazy 0)
-[parameter_bridge-4] [INFO] [1788489997.085229115] [ros_gz_bridge]: Creating ROS->GZ Bridge: [/tf (tf2_msgs/msg/TFMessage) -> /tf (gz.msgs.Pose_V)] (Lazy 0)
-[parameter_bridge-4] [INFO] [1788489997.085554437] [ros_gz_bridge]: Creating GZ->ROS Bridge: [/scan (gz.msgs.LaserScan) -> /scan (sensor_msgs/msg/LaserScan)] (Lazy 0)
-[parameter_bridge-4] [INFO] [1788489997.085955747] [ros_gz_bridge]: Creating ROS->GZ Bridge: [/scan (sensor_msgs/msg/LaserScan) -> /scan (gz.msgs.LaserScan)] (Lazy 0)
-[parameter_bridge-4] [INFO] [1788489997.086307190] [ros_gz_bridge]: Creating GZ->ROS Bridge: [/imu (gz.msgs.IMU) -> /imu (sensor_msgs/msg/Imu)] (Lazy 0)
-[parameter_bridge-4] [INFO] [1788489997.086669318] [ros_gz_bridge]: Creating ROS->GZ Bridge: [/imu (sensor_msgs/msg/Imu) -> /imu (gz.msgs.IMU)] (Lazy 0)
-[parameter_bridge-4] [INFO] [1788489997.087031447] [ros_gz_bridge]: Creating GZ->ROS Bridge: [/world/empty/dynamic_pose/info (gz.msgs.Pose_V) -> /world/empty/dynamic_pose/info (tf2_msgs/msg/TFMessage)] (Lazy 0)
-[parameter_bridge-4] [INFO] [1788489997.087310464] [ros_gz_bridge]: Creating ROS->GZ Bridge: [/world/empty/dynamic_pose/info (tf2_msgs/msg/TFMessage) -> /world/empty/dynamic_pose/info (gz.msgs.Pose_V)] (Lazy 0)
-[create-3] [INFO] [1788489998.020636920] [ros_gz_sim]: Waiting messages on topic [robot_description].
-[create-3] [INFO] [1788489998.119914766] [ros_gz_sim]: Entity creation successful.
-[INFO] [create-3]: process has finished cleanly [pid 27979]
-[gazebo-2] libEGL warning: pci id for fd 115: 10de:2860, driver (null)
-[gazebo-2] 
-[gazebo-2] pci id for fd 116: 10de:2860, driver (null)
-[gazebo-2] pci id for fd 117: 10de:2860, driver (null)
-[gazebo-2] libEGL warning: egl: failed to create dri2 screen
-[gazebo-2] libEGL warning: pci id for fd 115: 10de:2860, driver (null)
-[gazebo-2] 
-[gazebo-2] pci id for fd 116: 10de:2860, driver (null)
-[gazebo-2] pci id for fd 117: 10de:2860, driver (null)
-[gazebo-2] libEGL warning: egl: failed to create dri2 screen
-[gazebo-2] libEGL warning: pci id for fd 115: 10de:2860, driver (null)
-[gazebo-2] 
-[gazebo-2] libEGL warning: pci id for fd 71: 10de:2860, driver (null)
-[gazebo-2] 
-[gazebo-2] pci id for fd 72: 10de:2860, driver (null)
-[gazebo-2] pci id for fd 73: 10de:2860, driver (null)
-[gazebo-2] libEGL warning: egl: failed to create dri2 screen
-[gazebo-2] libEGL warning: pci id for fd 71: 10de:2860, driver (null)
-[gazebo-2] 
-[gazebo-2] pci id for fd 72: 10de:2860, driver (null)
-[gazebo-2] pci id for fd 73: 10de:2860, driver (null)
-[gazebo-2] libEGL warning: egl: failed to create dri2 screen
-[gazebo-2] libEGL warning: pci id for fd 71: 10de:2860, driver (null)
-[gazebo-2] 
-[parameter_bridge-4] [INFO] [1788490000.015153248] [ros_gz_bridge]: Passing message from ROS geometry_msgs/msg/Twist to Gazebo gz.msgs.Twist (showing msg only once per type)
+[INFO] [1789108681.652700755] [obstacle_avoidance]: Starting Obstacle Avoidance
+[INFO] [1789108681.808814833] [obstacle_avoidance]: 前方障碍！前->左
+[INFO] [1789108681.858567312] [obstacle_avoidance]: 前方障碍已清除！左->前
+[INFO] [1789108681.908756717] [obstacle_avoidance]: 前方障碍！前->右
+[INFO] [1789108681.958524632] [obstacle_avoidance]: 前方障碍已清除！右->前
+[INFO] [1789108682.008676044] [obstacle_avoidance]: 前方障碍！前->左
+[INFO] [1789108682.058537757] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108682.158563943] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108682.208614436] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108682.258565197] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108682.309013434] [obstacle_avoidance]: 前方障碍已清除！左->前
+[INFO] [1789108682.358558139] [obstacle_avoidance]: 前方障碍！前->左
+[INFO] [1789108682.408792663] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108682.458656751] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108682.558470411] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108682.608544650] [obstacle_avoidance]: 前方障碍已清除！右->前
+[INFO] [1789108682.658683003] [obstacle_avoidance]: 前方障碍！前->右
+[INFO] [1789108682.708773864] [obstacle_avoidance]: 前方障碍已清除！右->前
+[INFO] [1789108682.758626079] [obstacle_avoidance]: 前方障碍！前->左
+[INFO] [1789108682.808612458] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108682.858848170] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108682.908660016] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108682.958533602] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108683.058768755] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108683.158796133] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108683.258468509] [obstacle_avoidance]: 前方障碍已清除！左->前
+[INFO] [1789108683.458480522] [obstacle_avoidance]: 前方障碍！前->右
+[INFO] [1789108683.509009498] [obstacle_avoidance]: 前方障碍已清除！右->前
+[INFO] [1789108683.558604071] [obstacle_avoidance]: 前方障碍！前->右
+[INFO] [1789108683.608798229] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108683.658524592] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108683.708681944] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108683.808531227] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108683.858850051] [obstacle_avoidance]: 前方障碍已清除！右->前
+[INFO] [1789108683.908390009] [obstacle_avoidance]: 前方障碍！前->右
+[INFO] [1789108683.958802629] [obstacle_avoidance]: 前方障碍已清除！右->前
+[INFO] [1789108684.008434009] [obstacle_avoidance]: 前方障碍！前->左
+[INFO] [1789108684.058473820] [obstacle_avoidance]: 前方障碍已清除！左->前
+[INFO] [1789108684.108431708] [obstacle_avoidance]: 前方障碍！前->右
+[INFO] [1789108684.158795652] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108684.308383177] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108684.358516785] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108684.458450370] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108684.508547171] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108684.658528879] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108684.708711166] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108684.858657255] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108684.908730311] [obstacle_avoidance]: 前方障碍已清除！右->前
+[INFO] [1789108684.958741627] [obstacle_avoidance]: 前方障碍！前->右
+[INFO] [1789108685.008571287] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108685.208547697] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108685.258554266] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108685.308514530] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108685.358508039] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108685.458445190] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108685.508716526] [obstacle_avoidance]: 前方障碍已清除！右->前
+[INFO] [1789108685.558404900] [obstacle_avoidance]: 前方障碍！前->右
+[INFO] [1789108685.608494579] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108685.758849104] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108685.808461491] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108685.908651536] [obstacle_avoidance]: 前方障碍已清除！左->前
+[INFO] [1789108685.958387401] [obstacle_avoidance]: 前方障碍！前->右
+[INFO] [1789108686.008488954] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108686.1586[parameter_bridge-4] Exception sending a multicast message:Network is unreachable
+[parameter_bridge-4] Exception sending a multicast message:Network is unreachable
+[parameter_bridge-4] Exception sending a multicast message:Network is unreachable
+[parameter_bridge-4] Exception sending a multicast message:Network is unreachable
+[parameter_bridge-4] Exception sending a multicast message:Network is unreachable
+[parameter_bridge-4] Exception sending a multicast message:Network is unreachable
+[parameter_bridge-4] Exception sending a multicast message:Network is unreachable
+[parameter_bridge-4] Exception sending a multicast message:Network is unreachable
+[parameter_bridge-4] Exception sending a multicast message:Network is unreachable
+[parameter_bridge-4] Exception sending a multicast message:Network is unreachable
+[parameter_bridge-4] Exception sending a multicast message:Network is unreachable
+[parameter_bridge-4] Exception sending a multicast message:Network is unreachable
+[parameter_bridge-4] Exception sending a multicast message:Network is unreachable
+[parameter_bridge-4] Exception sending a multicast message:Network is unreachable
+[parameter_bridge-4] Exception sending a multicast message:Network is unreachable
+[parameter_bridge-4] Exception sending a multicast message:Network is unreachable
+[parameter_bridge-4] Exception sending a multicast message:Network is unreachable
+[parameter_bridge-4] Exception sending a multicast message:Network is unreachable
+[parameter_bridge-4] Exception sending a multicast message:Network is unreachable
+[parameter_bridge-4] Exception sending a multicast message:Network is unreachable
+[parameter_bridge-4] Exception sending a multicast message:Network is unreachable
+[parameter_bridge-4] Exception sending a multicast message:Network is unreachable
+[parameter_bridge-4] Exception sending a multicast message:Network is unreachable
+[parameter_bridge-4] Exception sending a multicast message:Network is unreachable
+[parameter_bridge-4] Exception sending a multicast message:Network is unreachable
+[parameter_bridge-4] Exception sending a multicast message:Network is unreachable
+[parameter_bridge-4] Exception sending a multicast message:Network is unreachable
+[parameter_bridge-4] Exception sending a multicast message:Network is unreachable
+[parameter_bridge-4] Exception sending a multicast message:Network is unreachable
+[parameter_bridge-4] Exception sending a multicast message:Network is unreachable
+[parameter_bridge-4] Exception sending a multicast message:Network is unreachable
+[parameter_bridge-4] Exception sending a multicast message:Network is unreachable
+[parameter_bridge-4] Exception sending a multicast message:Network is unreachable
+[parameter_bridge-4] Exception sending a multicast message:Network is unreachable
+[parameter_bridge-4] Exception sending a multicast message:Network is unreachable
+[parameter_bridge-4] Exception sending a multicast message:Network is unreachable
+dance]: 右边遇到障碍！右->左
+[INFO] [1789108689.208819402] [obstacle_avoidance]: 前方障碍已清除！左->前
+[INFO] [1789108689.258449606] [obstacle_avoidance]: 前方障碍！前->右
+[INFO] [1789108689.308468056] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108689.408490708] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108689.458437920] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108689.708711825] [obstacle_avoidance]: 前方障碍已清除！左->前
+[INFO] [1789108689.758761144] [obstacle_avoidance]: 前方障碍！前->右
+[INFO] [1789108689.808610998] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108689.858448979] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108689.908706075] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108690.108394007] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108690.158437392] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108690.208569824] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108690.258462422] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108690.308529553] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108690.358548005] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108690.608370746] [obstacle_avoidance]: 前方障碍已清除！左->前
+[INFO] [1789108690.658525737] [obstacle_avoidance]: 前方障碍！前->右
+[INFO] [1789108690.708770963] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108690.758423727] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108690.808850609] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108691.258602317] [obstacle_avoidance]: 前方障碍已清除！左->前
+[INFO] [1789108691.308599400] [obstacle_avoidance]: 前方障碍！前->右
+[INFO] [1789108691.358487250] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108691.458577586] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108691.508694585] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108691.558529008] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108691.608646007] [obstacle_avoidance]: 前方障碍已清除！右->前
+[INFO] [1789108691.658440062] [obstacle_avoidance]: 前方障碍！前->右
+[INFO] [1789108691.708484636] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108691.758683559] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108691.808894354] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108692.708629336] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108692.758676287] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108692.858707261] [obstacle_avoidance]: 前方障碍已清除！左->前
+[INFO] [1789108692.908559495] [obstacle_avoidance]: 前方障碍！前->右
+[INFO] [1789108692.958482967] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108693.108724743] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108693.158776445] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108693.258483291] [obstacle_avoidance]: 前方障碍已清除！左->前
+[INFO] [1789108693.308650161] [obstacle_avoidance]: 前方障碍！前->右
+[INFO] [1789108693.358555825] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108693.658547840] [obstacle_avoidance]: 前方障碍已清除！左->前
+[INFO] [1789108693.708476063] [obstacle_avoidance]: 前方障碍！前->右
+[INFO] [1789108693.758602565] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108693.958402129] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108694.008712662] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108694.058505535] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108694.108482439] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108694.258387030] [obstacle_avoidance]: 前方障碍已清除！左->前
+[INFO] [1789108694.308457730] [obstacle_avoidance]: 前方障碍！前->右
+[INFO] [1789108694.358657846] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108694.608415325] [obstacle_avoidance]: 前方障碍已清除！左->前
+[INFO] [1789108694.658455156] [obstacle_avoidance]: 前方障碍！前->右
+[INFO] [1789108694.708592345] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108694.758439834] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108694.808502223] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108694.858653660] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108694.908466717] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108695.108468133] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108695.158511528] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108695.208735391] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108695.258490273] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108695.308702263] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108695.359124406] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108695.458762396] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108695.508656191] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108695.808580553] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108695.858703497] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108695.908472626] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108695.958599131] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108696.008665085] [obstacle_avoidance]: 前方障碍已清除！左->前
+[INFO] [1789108696.058655053] [obstacle_avoidance]: 前方障碍！前->右
+[INFO] [1789108696.108469301] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108696.158452145] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108696.208538284] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108696.258455827] [obstacle_avoidance]: 前方障碍已清除！左->前
+[INFO] [1789108696.308469541] [obstacle_avoidance]: 前方障碍！前->右
+[INFO] [1789108696.358516499] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108696.608740605] [obstacle_avoidance]: 前方障碍已清除！左->前
+[INFO] [1789108696.658653399] [obstacle_avoidance]: 前方障碍！前->右
+[INFO] [1789108696.708633869] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108697.108508500] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108697.158905713] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108697.508504247] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108697.558590388] [obstacle_avoidance]: 前方障碍已清除！右->前
+[INFO] [1789108697.608727583] [obstacle_avoidance]: 前方障碍！前->右
+[INFO] [1789108697.658855279] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108697.758811473] [obstacle_avoidance]: 前方障碍已清除！左->前
+[INFO] [1789108697.808559234] [obstacle_avoidance]: 前方障碍！前->右
+[INFO] [1789108697.858520709] [obstacle_avoidance]: 前方障碍已清除！右->前
+[INFO] [1789108697.908426381] [obstacle_avoidance]: 前方障碍！前->右
+[INFO] [1789108697.958765416] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108698.008371890] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108698.058625441] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108698.259013943] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108698.308559866] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108698.658549034] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108698.758486235] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108698.858569473] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108698.908709045] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108699.208847162] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108699.258707721] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108699.358636614] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108699.409046892] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108699.458518016] [obstacle_avoidance]: 前方障碍已清除！左->前
+[INFO] [1789108699.508728827] [obstacle_avoidance]: 前方障碍！前->右
+[INFO] [1789108699.558532395] [obstacle_avoidance]: 前方障碍已清除！右->前
+[INFO] [1789108699.608642286] [obstacle_avoidance]: 前方障碍！前->右
+[INFO] [1789108699.658490972] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108699.758700068] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108699.808781463] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108700.008515772] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108700.058815632] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108700.208551662] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108700.258648494] [obstacle_avoidance]: 前方障碍已清除！右->前
+[INFO] [1789108700.308738203] [obstacle_avoidance]: 前方障碍！前->右
+[INFO] [1789108700.358459849] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108700.408418955] [obstacle_avoidance]: 前方障碍已清除！左->前
+[INFO] [1789108700.458481356] [obstacle_avoidance]: 前方障碍！前->右
+[INFO] [1789108700.508776467] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108700.958349055] [obstacle_avoidance]: 前方障碍已清除！左->前
+[INFO] [1789108701.008392460] [obstacle_avoidance]: 前方障碍！前->右
+[INFO] [1789108701.058469110] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108701.158514366] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108701.208754864] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108701.558656211] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108701.608462158] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108702.158340044] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108702.208552048] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108702.308456019] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108702.408538086] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108702.708358045] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108702.758771890] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108702.858438402] [obstacle_avoidance]: 前方障碍已清除！左->前
+[INFO] [1789108702.908557797] [obstacle_avoidance]: 前方障碍！前->右
+[INFO] [1789108702.958655821] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108703.508513556] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108703.558535595] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108703.858318759] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108703.908700549] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108704.008419306] [obstacle_avoidance]: 前方障碍已清除！左->前
+[INFO] [1789108704.108483571] [obstacle_avoidance]: 前方障碍！前->右
+[INFO] [1789108704.158467617] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108704.258452333] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108704.308684525] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108704.558290124] [obstacle_avoidance]: 前方障碍已清除！左->前
+[INFO] [1789108704.608327600] [obstacle_avoidance]: 前方障碍！前->右
+[INFO] [1789108704.658494490] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108704.858418804] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108704.908594005] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108705.108752221] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108705.158452505] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108705.358686711] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108705.408416678] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108705.558656150] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108705.608687690] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108706.058465768] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108706.108553113] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108706.158611964] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108706.208733741] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108706.758529800] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108706.808494854] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108707.108424094] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108707.158507879] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108707.358801465] [obstacle_avoidance]: 前方障碍已清除！左->前
+[INFO] [1789108707.408714279] [obstacle_avoidance]: 前方障碍！前->右
+[INFO] [1789108707.458663900] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108707.658696281] [obstacle_avoidance]: 前方障碍已清除！左->前
+[INFO] [1789108707.708431000] [obstacle_avoidance]: 前方障碍！前->右
+[INFO] [1789108707.758458983] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108707.858655048] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108707.908420638] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108708.208634844] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108708.258551222] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108708.408623302] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108708.458492188] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108709.008753710] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108709.108481988] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108710.008641421] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108710.058925865] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108710.408493700] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108710.458527624] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108711.008808184] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108711.058570219] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108711.108712189] [obstacle_avoidance]: 前方障碍已清除！左->前
+[INFO] [1789108711.158606014] [obstacle_avoidance]: 前方障碍！前->右
+[INFO] [1789108711.208791914] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108711.508796006] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108711.558618593] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108711.658634205] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108711.708653883] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108711.758580953] [obstacle_avoidance]: 前方障碍已清除！左->前
+[INFO] [1789108711.808855900] [obstacle_avoidance]: 前方障碍！前->右
+[INFO] [1789108711.858667802] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108712.858497441] [obstacle_avoidance]: 前方障碍已清除！左->前
+[INFO] [1789108712.908551553] [obstacle_avoidance]: 前方障碍！前->右
+[INFO] [1789108712.958672154] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108713.208523606] [obstacle_avoidance]: 前方障碍已清除！左->前
+[INFO] [1789108713.258652520] [obstacle_avoidance]: 前方障碍！前->右
+[INFO] [1789108713.308893040] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108713.358614710] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108713.408792303] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108714.108556135] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108714.158686238] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108714.258629435] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108714.308531577] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108714.958780348] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108715.008678928] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108715.508779617] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108715.558796929] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108715.658830364] [obstacle_avoidance]: 前方障碍已清除！左->前
+[INFO] [1789108715.708569848] [obstacle_avoidance]: 前方障碍！前->右
+[INFO] [1789108715.758384132] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108716.008395889] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108716.058687469] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108716.608507478] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108716.658756314] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108717.158857028] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108717.208519341] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108717.408748886] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108717.458560799] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108717.658688237] [obstacle_avoidance]: 前方障碍已清除！左->前
+[INFO] [1789108717.708464531] [obstacle_avoidance]: 前方障碍！前->右
+[INFO] [1789108717.758504404] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108717.808576335] [obstacle_avoidance]: 前方障碍已清除！左->前
+[INFO] [1789108717.858476108] [obstacle_avoidance]: 前方障碍！前->右
+[INFO] [1789108717.908450680] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108718.508590804] [obstacle_avoidance]: 前方障碍已清除！左->前
+[INFO] [1789108718.558636616] [obstacle_avoidance]: 前方障碍！前->右
+[INFO] [1789108718.608544702] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108719.208753700] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108719.308505761] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108719.408433542] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108719.458736999] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108719.858513423] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108719.908702901] [obstacle_avoidance]: 前方障碍已清除！右->前
+[INFO] [1789108719.958549248] [obstacle_avoidance]: 前方障碍！前->右
+[INFO] [1789108720.008545196] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108720.308384352] [obstacle_avoidance]: 前方障碍已清除！左->前
+[INFO] [1789108720.358414733] [obstacle_avoidance]: 前方障碍！前->右
+[INFO] [1789108720.408674262] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108720.758333648] [obstacle_avoidance]: 前方障碍已清除！左->前
+[INFO] [1789108720.808497006] [obstacle_avoidance]: 前方障碍！前->右
+[INFO] [1789108720.958572714] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108721.408560017] [obstacle_avoidance]: 前方障碍已清除！左->前
+[INFO] [1789108721.508576853] [obstacle_avoidance]: 前方障碍！前->右
+[INFO] [1789108721.558427953] [obstacle_avoidance]: 前方障碍已清除！右->前
+[INFO] [1789108721.608528387] [obstacle_avoidance]: 前方障碍！前->右
+[INFO] [1789108721.658467348] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108721.808722343] [obstacle_avoidance]: 前方障碍已清除！左->前
+[INFO] [1789108721.858370415] [obstacle_avoidance]: 前方障碍！前->右
+[INFO] [1789108721.908443541] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108722.408594221] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108722.458408517] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108723.008477980] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108723.058704270] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108723.158430225] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108723.208493855] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108723.508423279] [obstacle_avoidance]: 前方障碍已清除！左->前
+[INFO] [1789108723.558564084] [obstacle_avoidance]: 前方障碍！前->右
+[INFO] [1789108723.608457931] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108723.758346062] [obstacle_avoidance]: 前方障碍已清除！左->前
+[INFO] [1789108723.808679209] [obstacle_avoidance]: 前方障碍！前->右
+[INFO] [1789108723.858711970] [obstacle_avoidance]: 前方障碍已清除！右->前
+[INFO] [1789108723.908579697] [obstacle_avoidance]: 前方障碍！前->右
+[INFO] [1789108723.958498477] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108724.058554502] [obstacle_avoidance]: 前方障碍已清除！左->前
+[INFO] [1789108724.108535024] [obstacle_avoidance]: 前方障碍！前->右
+[INFO] [1789108724.158472803] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108724.208496067] [obstacle_avoidance]: 前方障碍已清除！左->前
+[INFO] [1789108724.258448094] [obstacle_avoidance]: 前方障碍！前->右
+[INFO] [1789108724.308474920] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108724.358367581] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108724.408450211] [obstacle_avoidance]: 前方障碍已清除！右->前
+[INFO] [1789108724.458417672] [obstacle_avoidance]: 前方障碍！前->右
+[INFO] [1789108724.508499114] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108724.558402461] [obstacle_avoidance]: 前方障碍已清除！左->前
+[INFO] [1789108724.608384170] [obstacle_avoidance]: 前方障碍！前->右
+[INFO] [1789108724.658521415] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108724.758531137] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108724.808591208] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108725.408509456] [obstacle_avoidance]: 前方障碍已清除！左->前
+[INFO] [1789108725.458645516] [obstacle_avoidance]: 前方障碍！前->右
+[INFO] [1789108725.508768515] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108725.608474292] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108725.658521305] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108726.008652111] [obstacle_avoidance]: 前方障碍已清除！左->前
+[INFO] [1789108726.058464040] [obstacle_avoidance]: 前方障碍！前->右
+[INFO] [1789108726.108492057] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108726.158423903] [obstacle_avoidance]: 前方障碍已清除！左->前
+[INFO] [1789108726.258592730] [obstacle_avoidance]: 前方障碍！前->右
+[INFO] [1789108726.308740665] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108726.808634964] [obstacle_avoidance]: 前方障碍已清除！左->前
+[INFO] [1789108726.858614302] [obstacle_avoidance]: 前方障碍！前->右
+[INFO] [1789108726.908637570] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108727.008896632] [obstacle_avoidance]: 前方障碍已清除！左->前
+[INFO] [1789108727.058496036] [obstacle_avoidance]: 前方障碍！前->右
+[INFO] [1789108727.108666531] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108727.158775287] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108727.208798556] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108727.358724702] [obstacle_avoidance]: 前方障碍已清除！左->前
+[INFO] [1789108727.408561566] [obstacle_avoidance]: 前方障碍！前->右
+[INFO] [1789108727.458631141] [obstacle_avoidance]: 前方障碍已清除！右->前
+[INFO] [1789108727.558509084] [obstacle_avoidance]: 前方障碍！前->右
+[INFO] [1789108727.608661769] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108727.708529026] [obstacle_avoidance]: 前方障碍已清除！左->前
+[INFO] [1789108727.758907298] [obstacle_avoidance]: 前方障碍！前->右
+[INFO] [1789108727.808567255] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108727.908525934] [obstacle_avoidance]: 前方障碍已清除！左->前
+[INFO] [1789108727.958787851] [obstacle_avoidance]: 前方障碍！前->右
+[INFO] [1789108728.008483426] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108728.258640152] [obstacle_avoidance]: 前方障碍已清除！左->前
+[INFO] [1789108728.308752471] [obstacle_avoidance]: 前方障碍！前->右
+[INFO] [1789108728.358661762] [obstacle_avoidance]: 前方障碍已清除！右->前
+[INFO] [1789108728.408388209] [obstacle_avoidance]: 前方障碍！前->右
+[INFO] [1789108728.458873340] [obstacle_avoidance]: 前方障碍已清除！右->前
+[INFO] [1789108728.508485806] [obstacle_avoidance]: 前方障碍！前->右
+[INFO] [1789108728.558488893] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108728.658459449] [obstacle_avoidance]: 前方障碍已清除！左->前
+[INFO] [1789108728.708599076] [obstacle_avoidance]: 前方障碍！前->右
+[INFO] [1789108728.758572481] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108728.808392725] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108728.858883792] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108729.058501960] [obstacle_avoidance]: 前方障碍已清除！左->前
+[ros2run]: Killed
+ance]: 前方障碍！前->右
+[INFO] [1789108725.179814367] [obstacle_avoidance]: 前方障碍已清除！右->前
+[INFO] [1789108725.379554804] [obstacle_avoidance]: 前方障碍！前->右
+[INFO] [1789108725.429630311] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108725.579801030] [obstacle_avoidance]: 前方障碍已清除！左->前
+[INFO] [1789108725.629739998] [obstacle_avoidance]: 前方障碍！前->右
+[INFO] [1789108725.729607248] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108726.129665154] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108726.179651616] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108726.829768880] [obstacle_avoidance]: 前方障碍已清除！左->前
+[INFO] [1789108726.879407464] [obstacle_avoidance]: 前方障碍！前->右
+[INFO] [1789108726.929605264] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108727.079828233] [obstacle_avoidance]: 前方障碍已清除！左->前
+[INFO] [1789108727.129857439] [obstacle_avoidance]: 前方障碍！前->右
+[INFO] [1789108727.179490087] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108727.229723509] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108727.279650607] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108727.629496487] [obstacle_avoidance]: 前方障碍已清除！左->前
+[INFO] [1789108727.679471077] [obstacle_avoidance]: 前方障碍！前->右
+[INFO] [1789108727.729619014] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108727.779876181] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108727.829720169] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108727.929776207] [obstacle_avoidance]: 前方障碍已清除！左->前
+[INFO] [1789108727.979496715] [obstacle_avoidance]: 前方障碍！前->右
+[INFO] [1789108728.029694519] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108728.079496953] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108728.129916782] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108728.179636105] [obstacle_avoidance]: 左边遇到障碍！左->右
+[INFO] [1789108728.279624471] [obstacle_avoidance]: 前方障碍已清除！右->前
+[INFO] [1789108728.329747475] [obstacle_avoidance]: 前方障碍！前->右
+[INFO] [1789108728.379548722] [obstacle_avoidance]: 前方障碍已清除！右->前
+[INFO] [1789108728.429676476] [obstacle_avoidance]: 前方障碍！前->右
+[INFO] [1789108728.479835099] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108728.879745818] [obstacle_avoidance]: 前方障碍已清除！左->前
+[INFO] [1789108728.979629701] [obstacle_avoidance]: 前方障碍！前->右
+[INFO] [1789108729.029952173] [obstacle_avoidance]: 右边遇到障碍！右->左
+[INFO] [1789108729.079715428] [obstacle_avoidance]: 前方障碍已清除！左->前
+[ros2run]: Killed

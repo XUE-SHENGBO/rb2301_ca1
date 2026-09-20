@@ -21,6 +21,7 @@ setup(
     entry_points={
         'console_scripts': [
             'obstacle_avoidance = rb2301_ca1.obstacle_avoidance:main',
+            'point_cloud_plotter = rb2301_ca1.point_cloud_plotter:main',
         ],
     },
 )
