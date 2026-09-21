@@ -35,7 +35,8 @@ class PointCloudPlotter(Node):
             label="Robot",
         )
 
-        self.ax.set_xlim(-3, 3)
+        # avoidance_xy 的 X 正方向为机器人左侧，反转横轴以匹配实际左右。
+        self.ax.set_xlim(3, -3)
         self.ax.set_ylim(-3, 3)
         self.ax.set_aspect("equal")
         self.ax.set_xlabel("X (m)")
